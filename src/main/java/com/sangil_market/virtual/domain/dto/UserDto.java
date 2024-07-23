@@ -8,6 +8,8 @@ public class UserDto {
 
     private Long id;
 
+    private Long idCard;
+
     private String username;
 
     private String address;

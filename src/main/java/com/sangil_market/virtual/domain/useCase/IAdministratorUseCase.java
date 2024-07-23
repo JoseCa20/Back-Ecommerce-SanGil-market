@@ -13,6 +13,8 @@ public interface IAdministratorUseCase {
 
     Optional<AdministratorDto> getAdministratorByEmail(String email);
 
+    Optional<AdministratorDto> getAdministratorByRole(String role);
+
     AdministratorDto save(AdministratorDto newAdministratorDto);
 
     boolean delete(Long id);

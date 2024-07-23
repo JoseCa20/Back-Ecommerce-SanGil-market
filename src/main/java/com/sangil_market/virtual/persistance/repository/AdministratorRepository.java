@@ -35,6 +35,11 @@ public class AdministratorRepository implements IAdministratorRepository {
     }
 
     @Override
+    public Optional<AdministratorDto> getAdministratorByRole(String role) {
+        return iAdministratorCrudRepository.findByRole(role).map(iAdministratorMapper::toAdministratorDto);
+    }
+
+    @Override
     public AdministratorDto save(AdministratorDto newAdministratorDto) {
         Administrator administrator = iAdministratorMapper.toAdministrator(newAdministratorDto);
         return iAdministratorMapper.toAdministratorDto(iAdministratorCrudRepository.save(administrator));

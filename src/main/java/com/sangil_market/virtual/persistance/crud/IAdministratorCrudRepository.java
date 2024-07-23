@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface IAdministratorCrudRepository extends JpaRepository<Administrator, Long> {
 
     Optional<Administrator> findByEmail(String email);
+
+    Optional<Administrator> findByRole(String role);
 }

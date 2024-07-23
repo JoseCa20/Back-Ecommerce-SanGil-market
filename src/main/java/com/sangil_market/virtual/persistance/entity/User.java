@@ -10,8 +10,11 @@ import java.util.List;
 @Getter @Setter
 public class User {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
+    private Long idCard;
 
     private String username;
 

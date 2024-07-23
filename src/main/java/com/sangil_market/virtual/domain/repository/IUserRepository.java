@@ -9,11 +9,13 @@ public interface IUserRepository {
 
     List<UserDto> getAll();
 
-    Optional<UserDto> getUser(Long id);
+    Optional<UserDto> getUserByIdCard(Long idCard);
 
     Optional<UserDto> getUserByEmail(String email);
 
+    Optional<UserDto> getUserByRole(String role);
+
     UserDto save(UserDto newUserDto);
 
-    void delete(Long id);
+    void delete(Long idCard);
 }

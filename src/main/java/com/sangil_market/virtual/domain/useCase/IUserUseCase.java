@@ -9,11 +9,15 @@ public interface IUserUseCase {
 
     List<UserDto> getAll();
 
-    Optional<UserDto> getUser(Long id);
+    Optional<UserDto> getUserByIdCard(Long idCard);
 
     Optional<UserDto> getUserByEmail(String email);
 
+    Optional<UserDto> getUserByRole(String role);
+
     UserDto save(UserDto newUserDto);
 
-    boolean delete(Long id);
+    Optional<UserDto> update(UserDto modifyCustomer);
+
+    boolean delete(Long idCard);
 }

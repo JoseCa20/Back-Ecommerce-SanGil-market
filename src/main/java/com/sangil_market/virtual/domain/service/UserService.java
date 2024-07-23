@@ -21,8 +21,8 @@ public class UserService implements IUserUseCase {
     }
 
     @Override
-    public Optional<UserDto> getUser(Long id) {
-        return iUserRepository.getUser(id);
+    public Optional<UserDto> getUserByIdCard(Long idCard) {
+        return iUserRepository.getUserByIdCard(idCard);
     }
 
     @Override
@@ -31,17 +31,30 @@ public class UserService implements IUserUseCase {
     }
 
     @Override
+    public Optional<UserDto> getUserByRole(String role) {
+        return iUserRepository.getUserByRole(role);
+    }
+
+    @Override
     public UserDto save(UserDto newUserDto) {
         return iUserRepository.save(newUserDto);
     }
 
     @Override
-    public boolean delete(Long id) {
-        if (iUserRepository.getUser(id).isEmpty()){
+    public Optional<UserDto> update(UserDto updateCustomer) {
+        if (iUserRepository.getUserByIdCard(updateCustomer.getId()).isEmpty()){
+            return Optional.empty();
+        }
+        return Optional.of(iUserRepository.save(updateCustomer));
+    }
+
+    @Override
+    public boolean delete(Long idCard) {
+        if (iUserRepository.getUserByIdCard(idCard).isEmpty()){
             return false;
         }
 
-        iUserRepository.delete(id);
+        iUserRepository.delete(idCard);
         return true;
     }
 }

@@ -13,6 +13,8 @@ public interface IAdministratorRepository {
 
     Optional<AdministratorDto> getAdministratorByEmail(String email);
 
+    Optional<AdministratorDto> getAdministratorByRole(String role);
+
     AdministratorDto save(AdministratorDto newAdministratorDto);
 
     void delete(Long id);

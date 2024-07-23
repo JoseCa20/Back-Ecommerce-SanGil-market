@@ -21,13 +21,13 @@ public class UserController {
         return ResponseEntity.ok(iUserUseCase.getAll());
     }
 
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<UserDto> getUser(@PathVariable Long id){
-        return ResponseEntity.of(iUserUseCase.getUser(id));
+    @GetMapping(path = "/{idCard}")
+    public ResponseEntity<UserDto> getUserByIdCard(@PathVariable Long idCard){
+        return ResponseEntity.of(iUserUseCase.getUserByIdCard(idCard));
     }
 
     @GetMapping(path = "/email/{email}")
-    public ResponseEntity<UserDto> getUser(@PathVariable String email){
+    public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email){
         return ResponseEntity.of(iUserUseCase.getUserByEmail(email));
     }
 
@@ -36,8 +36,16 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(iUserUseCase.save(newUserDto));
     }
 
-    @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable Long id){
-        return new ResponseEntity<>(this.iUserUseCase.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody UserDto updateUserDto){
+        if (updateUserDto.getId() == null || !updateUserDto.getId().equals(id)){
+            return ResponseEntity.badRequest().build();
+        }
+        return iUserUseCase.update(updateUserDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping(path = "/{idCard}")
+    public ResponseEntity<Boolean> delete(@PathVariable Long idCard){
+        return new ResponseEntity<>(this.iUserUseCase.delete(idCard) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }

@@ -25,13 +25,18 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public Optional<UserDto> getUser(Long id) {
-        return iUserCrudRepository.findById(id).map(iUserMapper::toUserDto);
+    public Optional<UserDto> getUserByIdCard(Long idCard) {
+        return iUserCrudRepository.findById(idCard).map(iUserMapper::toUserDto);
     }
 
     @Override
     public Optional<UserDto> getUserByEmail(String email) {
         return iUserCrudRepository.findByEmail(email).map(iUserMapper::toUserDto);
+    }
+
+    @Override
+    public Optional<UserDto> getUserByRole(String role) {
+        return iUserCrudRepository.findByRole(role).map(iUserMapper::toUserDto);
     }
 
     @Override
@@ -41,7 +46,7 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public void delete(Long id) {
-        iUserCrudRepository.deleteById(id);
+    public void delete(Long idCard) {
+        iUserCrudRepository.deleteById(idCard);
     }
 }
