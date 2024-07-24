@@ -47,17 +47,18 @@ public class AdministratorService implements IAdministratorUseCase {
 
     @Override
     public AdministratorDto save(AdministratorDto newAdministratorDto) {
+
         if (!newAdministratorDto.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
             throw new EmailValidationException();
         }
 
-        if (iAdministratorRepository.getAdministratorById(newAdministratorDto.getId()).isPresent() ||
+        if (iAdministratorRepository.getAdministratorById(newAdministratorDto.getIdCard()).isPresent() ||
                 iAdministratorRepository.getAdministratorByEmail(newAdministratorDto.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException();
         }
 
-        String passwordGenerated = generateRandomPassword(10);
+        String passwordGenerated = newAdministratorDto.getPassword();
         newAdministratorDto.setPassword(passwordEncoder.encode(passwordGenerated));
         newAdministratorDto.setRole("SUB-ADMIN");
 
