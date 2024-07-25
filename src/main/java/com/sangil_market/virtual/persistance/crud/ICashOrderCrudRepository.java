@@ -8,5 +8,7 @@ import java.util.Optional;
 
 public interface ICashOrderCrudRepository extends JpaRepository<CashOrder, Long> {
 
+    Optional<CashOrder> getCashOrderById(Long id);
+
     Optional<CashOrder> findByDate(LocalDateTime date);
 }

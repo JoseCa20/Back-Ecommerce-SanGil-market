@@ -36,7 +36,7 @@ public class CategoryRepository implements ICategoryRepository {
     }
 
     @Override
-    public void delete(Long id) {
-        iCategoryCrudRepository.deleteById(id);
+    public void delete(String name) {
+        iCategoryCrudRepository.deleteByName(name);
     }
 }

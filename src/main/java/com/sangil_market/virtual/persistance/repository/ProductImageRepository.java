@@ -36,7 +36,7 @@ public class ProductImageRepository implements IProductImageRepository {
     }
 
     @Override
-    public void delete(Long id) {
-        iProductImageCrudRepository.deleteById(id);
+    public void deleteByImageUrl(String imageUrl) {
+        iProductImageCrudRepository.deleteByImageUrl(imageUrl);
     }
 }

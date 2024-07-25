@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface ICategoryCrudRepository extends JpaRepository<Category, Long> {
 
     Optional<Category> findByName(String name);
+
+    void deleteByName(String name);
 }

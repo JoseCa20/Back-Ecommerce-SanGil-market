@@ -1,11 +1,11 @@
-package com.sangil_market.virtual.domain.repository;
+package com.sangil_market.virtual.domain.useCase;
 
 import com.sangil_market.virtual.domain.dto.ProductDto;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IProductRepository {
+public interface IProductUseCase {
 
     List<ProductDto> getAll();
 
@@ -15,5 +15,5 @@ public interface IProductRepository {
 
     ProductDto save(ProductDto newProductDto);
 
-    void deleteByName(String name);
+    boolean deleteByName(String name);
 }

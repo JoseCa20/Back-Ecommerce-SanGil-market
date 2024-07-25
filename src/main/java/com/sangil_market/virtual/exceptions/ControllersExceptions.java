@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ControllersExceptions {
 
     @ExceptionHandler({PasswordIncorrectException.class, EmailValidationException.class, InvalidInputException.class,
-    OperationNotAllowedException.class, ResourceNotFoundException.class, UserNotFoundException.class})
+    OperationNotAllowedException.class, ResourceNotFoundException.class, UserNotFoundException.class, ResourceAlreadyExists.class})
     public ProblemDetail badRequestException(RuntimeException e) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
     }

@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface IProductImageCrudRepository extends JpaRepository<ProductImage, Long> {
 
     Optional<ProductImage> findByImageUrl(String url);
+
+    void deleteByImageUrl(String imageUrl);
 }

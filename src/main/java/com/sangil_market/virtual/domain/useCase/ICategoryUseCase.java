@@ -1,11 +1,11 @@
-package com.sangil_market.virtual.domain.repository;
+package com.sangil_market.virtual.domain.useCase;
 
 import com.sangil_market.virtual.domain.dto.CategoryDto;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ICategoryRepository {
+public interface ICategoryUseCase {
 
     List<CategoryDto> getAll();
 
@@ -13,5 +13,5 @@ public interface ICategoryRepository {
 
     CategoryDto save(CategoryDto newCategoryDto);
 
-    void delete(String name);
+    boolean delete(String name);
 }

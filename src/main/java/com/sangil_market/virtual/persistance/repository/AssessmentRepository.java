@@ -31,6 +31,11 @@ public class AssessmentRepository implements IAssessmentRepository {
     }
 
     @Override
+    public Optional<AssessmentDto> getAssessmentById(Long id) {
+        return iAssessmentCrudRepository.findById(id).map(iAssessmentMapper::toAssessmentDto);
+    }
+
+    @Override
     public AssessmentDto save(AssessmentDto newAssessmentDto) {
         Assessment assessment = iAssessmentMapper.toAssessment(newAssessmentDto);
         return iAssessmentMapper.toAssessmentDto(iAssessmentCrudRepository.save(assessment));

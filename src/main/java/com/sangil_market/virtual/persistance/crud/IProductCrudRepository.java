@@ -11,5 +11,7 @@ public interface IProductCrudRepository extends JpaRepository<Product, Long> {
 
     Optional<Product> findByPrice(Double name);
 
+    void deleteByName(String name);
+
 
 }

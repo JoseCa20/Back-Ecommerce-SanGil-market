@@ -26,6 +26,11 @@ public class CashOrderRepository implements ICashOrderRepository {
     }
 
     @Override
+    public Optional<CashOrderDto> getCashOrderById(Long id) {
+        return iCashOrderCrudRepository.getCashOrderById(id).map(iCashOrderMapper::toCashOrderDto);
+    }
+
+    @Override
     public Optional<CashOrderDto> getCashOrderByDate(LocalDateTime date) {
         return iCashOrderCrudRepository.findByDate(date).map(iCashOrderMapper::toCashOrderDto);
     }

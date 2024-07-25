@@ -1,4 +1,4 @@
-package com.sangil_market.virtual.domain.repository;
+package com.sangil_market.virtual.domain.useCase;
 
 import com.sangil_market.virtual.domain.dto.CashOrderDto;
 
@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public interface ICashOrderRepository {
+public interface ICashOrderUseCase {
 
     List<CashOrderDto> getAll();
 
@@ -16,5 +16,5 @@ public interface ICashOrderRepository {
 
     CashOrderDto save(CashOrderDto newCashOrderDto);
 
-    void delete(Long id);
+    boolean delete(Long id);
 }

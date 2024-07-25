@@ -41,7 +41,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public void delete(Long id) {
-        iProductCrudRepository.deleteById(id);
+    public void deleteByName(String name) {
+        iProductCrudRepository.deleteByName(name);
     }
 }

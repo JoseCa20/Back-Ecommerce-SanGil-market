@@ -1,11 +1,11 @@
-package com.sangil_market.virtual.domain.repository;
+package com.sangil_market.virtual.domain.useCase;
 
 import com.sangil_market.virtual.domain.dto.ProductImageDto;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IProductImageRepository {
+public interface IProductImageUseCase {
 
     List<ProductImageDto> getAll();
 
@@ -13,5 +13,5 @@ public interface IProductImageRepository {
 
     ProductImageDto save(ProductImageDto newProductImageDto);
 
-    void deleteByImageUrl(String imageUrl);
+    boolean deleteByImageUrl(String imageUrl);
 }

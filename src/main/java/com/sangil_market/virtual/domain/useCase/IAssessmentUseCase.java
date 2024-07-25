@@ -1,11 +1,11 @@
-package com.sangil_market.virtual.domain.repository;
+package com.sangil_market.virtual.domain.useCase;
 
 import com.sangil_market.virtual.domain.dto.AssessmentDto;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IAssessmentRepository {
+public interface IAssessmentUseCase {
 
     List<AssessmentDto> getAll();
 
@@ -15,5 +15,5 @@ public interface IAssessmentRepository {
 
     AssessmentDto save(AssessmentDto newAssessmentDto);
 
-    void delete(Long id);
+    boolean delete(Long id);
 }
