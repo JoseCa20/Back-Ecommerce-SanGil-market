@@ -1,5 +1,6 @@
 package com.sangil_market.virtual.domain.useCase;
 
+import com.sangil_market.virtual.domain.dto.AssessmentDto;
 import com.sangil_market.virtual.domain.dto.CashOrderDto;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,8 @@ public interface ICashOrderUseCase {
     Optional<CashOrderDto> getCashOrderByDate(LocalDateTime date);
 
     CashOrderDto save(CashOrderDto newCashOrderDto);
+
+    Optional<CashOrderDto> update(CashOrderDto updateCashOrderDto);
 
     boolean delete(Long id);
 }

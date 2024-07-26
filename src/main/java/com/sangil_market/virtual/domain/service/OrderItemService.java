@@ -31,6 +31,14 @@ public class OrderItemService implements IOrderItemUseCase {
     }
 
     @Override
+    public Optional<OrderItemDto> update(OrderItemDto updateOrderItemDto) {
+        if (iOrderItemRepository.getOrderItemById(updateOrderItemDto.getId()).isEmpty()){
+            return Optional.empty();
+        }
+        return Optional.of(iOrderItemRepository.save(updateOrderItemDto));
+    }
+
+    @Override
     public boolean delete(Long id) {
         if (iOrderItemRepository.getOrderItemById(id).isEmpty()){
             return false;

@@ -13,5 +13,7 @@ public interface IProductImageUseCase {
 
     ProductImageDto save(ProductImageDto newProductImageDto);
 
+    Optional<ProductImageDto> update(ProductImageDto updateProductImageDto);
+
     boolean deleteByImageUrl(String imageUrl);
 }

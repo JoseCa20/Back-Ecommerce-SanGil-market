@@ -35,6 +35,14 @@ public class CategoryService implements ICategoryUseCase {
     }
 
     @Override
+    public Optional<CategoryDto> update(CategoryDto updateCategoryDto) {
+        if (iCategoryRepository.getCategoryByName(updateCategoryDto.getName()).isEmpty()){
+            return Optional.empty();
+        }
+        return Optional.of(iCategoryRepository.save(updateCategoryDto));
+    }
+
+    @Override
     public boolean delete(String name) {
         if (iCategoryRepository.getCategoryByName(name).isEmpty()){
             return false;

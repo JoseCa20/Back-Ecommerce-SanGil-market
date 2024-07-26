@@ -37,6 +37,14 @@ public class CashOrderService implements ICashOrderUseCase {
     }
 
     @Override
+    public Optional<CashOrderDto> update(CashOrderDto updateCashOrderDto) {
+        if (iCashOrderRepository.getCashOrderById(updateCashOrderDto.getId()).isEmpty()){
+            return Optional.empty();
+        }
+        return Optional.of(iCashOrderRepository.save(updateCashOrderDto));
+    }
+
+    @Override
     public boolean delete(Long id) {
         if (iCashOrderRepository.getCashOrderById(id).isEmpty()){
             return false;

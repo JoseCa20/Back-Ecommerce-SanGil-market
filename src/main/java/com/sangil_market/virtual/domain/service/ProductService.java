@@ -40,6 +40,15 @@ public class ProductService implements IProductUseCase {
     }
 
     @Override
+    public Optional<ProductDto> update(ProductDto updateProductDto) {
+        if (iProductRepository.getProductByName(updateProductDto.getName()).isEmpty()){
+            return Optional.empty();
+        }
+
+        return Optional.of(iProductRepository.save(updateProductDto));
+    }
+
+    @Override
     public boolean deleteByName(String name) {
         if (iProductRepository.getProductByName(name).isEmpty()){
             return false;

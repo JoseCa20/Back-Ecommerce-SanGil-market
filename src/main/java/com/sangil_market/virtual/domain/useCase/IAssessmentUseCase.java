@@ -15,5 +15,7 @@ public interface IAssessmentUseCase {
 
     AssessmentDto save(AssessmentDto newAssessmentDto);
 
+    Optional<AssessmentDto> update(AssessmentDto updateAssessment);
+
     boolean delete(Long id);
 }

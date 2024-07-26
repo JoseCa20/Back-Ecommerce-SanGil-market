@@ -42,7 +42,7 @@ public class UserService implements IUserUseCase {
 
     @Override
     public Optional<UserDto> update(UserDto updateCustomer) {
-        if (iUserRepository.getUserByIdCard(updateCustomer.getId()).isEmpty()){
+        if (iUserRepository.getUserByIdCard(updateCustomer.getIdCard()).isEmpty()){
             return Optional.empty();
         }
         return Optional.of(iUserRepository.save(updateCustomer));

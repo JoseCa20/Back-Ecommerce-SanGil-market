@@ -36,6 +36,14 @@ public class AssessmentService implements IAssessmentUseCase {
     }
 
     @Override
+    public Optional<AssessmentDto> update(AssessmentDto updateAssessment) {
+        if (iAssessmentRepository.getAssessmentById(updateAssessment.getId()).isEmpty()){
+            return Optional.empty();
+        }
+        return Optional.of(iAssessmentRepository.save(updateAssessment));
+    }
+
+    @Override
     public boolean delete(Long id) {
         if (iAssessmentRepository.getAssessmentById(id).isEmpty()){
             return false;

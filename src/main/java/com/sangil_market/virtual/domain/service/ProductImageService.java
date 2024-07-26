@@ -31,6 +31,15 @@ public class ProductImageService implements IProductImageUseCase {
     }
 
     @Override
+    public Optional<ProductImageDto> update(ProductImageDto updateProductImageDto) {
+        if (iProductImageRepository.getProductImageByUrl(updateProductImageDto.getImageUrl()).isEmpty()){
+            return Optional.empty();
+        }
+
+        return Optional.of(iProductImageRepository.save(updateProductImageDto));
+    }
+
+    @Override
     public boolean deleteByImageUrl(String imageUrl) {
         if (iProductImageRepository.getProductImageByUrl(imageUrl).isEmpty()){
             return false;

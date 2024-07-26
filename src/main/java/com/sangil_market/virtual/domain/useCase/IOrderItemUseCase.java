@@ -13,5 +13,7 @@ public interface IOrderItemUseCase {
 
     OrderItemDto save(OrderItemDto newOrderItemDto);
 
+    Optional<OrderItemDto> update(OrderItemDto updateOrderItemDto);
+
     boolean delete(Long id);
 }

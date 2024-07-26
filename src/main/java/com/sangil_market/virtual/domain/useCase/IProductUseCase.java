@@ -15,5 +15,7 @@ public interface IProductUseCase {
 
     ProductDto save(ProductDto newProductDto);
 
+    Optional<ProductDto> update(ProductDto updateProductDto);
+
     boolean deleteByName(String name);
 }
